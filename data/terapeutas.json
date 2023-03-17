@@ -1,0 +1,179 @@
+{
+    "terapeutas": "SPA del Bosque",
+    "ciudad": "Reñaca, Viña del mar.",
+    "formada": 2009,
+    "active": true,
+    "miembros": [
+      {
+        "name": "Tamara Abril McPerson",
+        "ingreso" : "2020",
+        "cargo": "terapeuta",
+        "fecha de nacimiento": "",
+        "email":"tamaraabril@spadelbosque.cl",
+        "password": "123456",
+        "especialidad": [
+          "drenajes linfaticos",
+          "ayurvedico",
+          "todo tipo de masajes"
+        ]
+      },
+      {
+        "name": "Pamela Alvarez Lara",
+        "ingreso" : "2012",
+        "cargo":"terapeuta",
+        "fecha de nacimiento": "09-04-1986",
+        "email":"Pamelaalvarez@spadelbosque.cl",
+        "password": "123456",
+        "especialidad": [
+          "masajes del bosque",
+          "",
+          "",
+          "ayurvedico",
+          "todo tipo de masajes"
+        ]
+      },
+      {
+        "name": "",
+        "ingreso" : "",
+        "cargo":"terapeuta",
+        "fecha de nacimiento": "",
+        "email":"",
+        "password": "",
+        "especialidad": [
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "name": "Ana Pascuala Jerez",
+        "ingreso" : "2018",
+        "cargo":"terapeuta",
+        "fecha de nacimiento": "",
+        "email":"anapascualajerez@spadelbosque.cl",
+        "password": "123456",
+        "especialidad": [
+          "drenajes linfaticos",
+          "ayurvedico",
+          "No realiza Descontracturantes"
+          
+        ]
+      },
+      {
+        "name": "Pamela Malicett",
+        "ingreso" : "2013",
+        "fecha de nacimiento": "26-03-1970",
+        "email":"pamelamalicett@spadelbosque.cl",
+        "password": "123456",
+        "especialidad": [
+          "drenajes linfaticos",
+          "ayurvedico",
+          "todo tipo de masajes"
+        ]
+      },
+      {
+        "name": "Cecilia Navarro",
+        "ingreso" : "2012",
+        "cargo":"terapeuta",
+        "fecha de nacimiento": "07-02-1969",
+        "email":"cecilianavarro@spadelbosque.cl",
+        "password": "123456",
+        "especialidad": [
+          "drenajes linfaticos",
+          "ayurvedico",
+          "todo tipo de masajes"
+        ]
+      },
+      {
+        "name": "Viviana Schiappacasse",
+        "ingreso" : "2012",
+        "cargo":"terapeuta",
+        "fecha de nacimiento": "23-07",
+        "email":"vivianaschiappacasse@spadelbosque.cl",
+        "password": "123456",
+        "especialidad": [
+          "drenajes linfaticos",
+          "ayurvedico",
+          "todo tipo de masajes"
+        ]
+      },
+      {
+        "name": "María Paz",
+        "ingreso" : "2022",
+        "cargo":"terapeuta",
+        "fecha de nacimiento": "",
+        "email":"mariapaz@spadelbosque.cl",
+        "password": "123456",
+        "especialidad": [
+          "drenajes linfaticos",
+          "ayurvedico",
+          "todo tipo de masajes"
+        ]
+      },
+      {
+        "name": "Rosita Cuevas",
+        "ingreso" : "2018",
+        "cargo":"terapeuta",
+        "fecha de nacimiento": "",
+        "email":"rositacuevas@spadelbosque.cl",
+        "password": "123456",
+        "especialidad": [
+          "drenajes linfaticos",
+          "ayurvedico",
+          "todo tipo de masajes"
+        ]
+      },
+      {
+        "name": "sin usuario",
+        "ingreso" : "2020",
+        "cargo":"terapeuta",
+        "fecha de nacimiento": "",
+        "email":"usuario@spadelbosque.cl",
+        "password": "123456",
+        "especialidad": [
+          "drenajes linfaticos",
+          "ayurvedico",
+          "todo tipo de masajes"
+        ]
+      },
+      {
+        "name": "sin usuario",
+        "ingreso" : "2020",
+        "cargo":"terapeuta",
+        "fecha de nacimiento": "",
+        "email":"usuario@spadelbosque.cl",
+        "password": "123456",
+        "especialidad": [
+          "drenajes linfaticos",
+          "ayurvedico",
+          "todo tipo de masajes"
+        ]
+      },
+      {
+        "name": "sin usuario",
+        "ingreso" : "2020",
+        "cargo":"terapeuta",
+        "fecha de nacimiento": "",
+        "email":"usuario@spadelbosque.cl",
+        "password": "123456",
+        "especialidad": [
+          "drenajes linfaticos",
+          "ayurvedico",
+          "todo tipo de masajes"
+        ]
+      },
+      {
+        "name": "sin usuario",
+        "ingreso" : "2020",
+        "cargo":"terapeuta",
+        "fecha de nacimiento": "",
+        "email":"usuario@spadelbosque.cl",
+        "password": "123456",
+        "especialidad": [
+          "drenajes linfaticos",
+          "ayurvedico",
+          "todo tipo de masajes"
+        ]
+      }
+    ]
+  }

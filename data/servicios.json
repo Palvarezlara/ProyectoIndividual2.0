@@ -1,0 +1,279 @@
+{
+    "active":true,
+    "servicios":    [
+        {
+            "id":"",
+            "nombre":"Masaje expres",
+            "tiempo":"20",
+            "comision":"4500",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"",
+            "nombre":"Masaje de niños",
+            "tiempo":"20",
+            "comision":"4500",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"mas30",
+            "nombre":"Masaje de Relajación",
+            "tiempo":"30",
+            "comision":"6500",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"mas40",
+            "nombre":"Masaje de Relajación",
+            "tiempo":"40",
+            "comision":"7500",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"mas60",
+            "nombre":"Masaje de Relajación",
+            "tiempo":"60",
+            "comision":"8500",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"bosq30",
+            "nombre":"Masaje del Bosque",
+            "tiempo":"30",
+            "comision":"00",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"bosq40",
+            "nombre":"Masaje de Bosque",
+            "tiempo":"40",
+            "comision":"9000",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"bosq60",
+            "nombre":"Masaje de Bosque",
+            "tiempo":"60",
+            "comision":"10000",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"desc30",
+            "nombre":"Masaje Descontracturante",
+            "tiempo":"30",
+            "comision":"7500",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"desc40",
+            "nombre":"Masaje Descontracturante",
+            "tiempo":"40",
+            "comision":"9000",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"desc60",
+            "nombre":"Masaje Descontracturante",
+            "tiempo":"60",
+            "comision":"12000",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"emba",
+            "nombre":"Masaje de embarazada",
+            "tiempo":"40",
+            "comision":"9000",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"refl40",
+            "nombre":"Reflexologia podal",
+            "tiempo":"50",
+            "comision":"10000",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"ayur50",
+            "nombre":"Masaje Ayurvedico",
+            "tiempo":"50",
+            "comision":"10000",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"drenloc",
+            "nombre":"Drenaje Linfatico",
+            "tiempo":"40",
+            "comision":"9000",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"drencom",
+            "nombre":"Drenaje Linfatico",
+            "tiempo":"60",
+            "comision":"10000",
+            "categoria":"Terapias",
+            "descripcion":""
+
+            
+        },
+        {
+            "id":"pied60",
+            "nombre":"Masaje de piedras calientes",
+            "tiempo":"60",
+            "comision":"12000",
+            "categoria":"Terapias",
+            "descripcion":""
+            
+        },
+        {
+            "id":"exf30",
+            "nombre":"Exfoliación corporal",
+            "tiempo":"30",
+            "comision":"7500",
+            "categoria":"Tratamientos corporales",
+            "descripcion":""
+            
+        },
+        {
+            "id":"envchoc",
+            "nombre":"Envoltura de Chocolate",
+            "tiempo":"50",
+            "comision":"10000",
+            "categoria":"Tratamientos corporales",
+            "descripcion":""
+            
+        },
+        {
+            "id":"envcane",
+            "nombre":"Envoltura de Canela",
+            "tiempo":"50",
+            "comision":"10000",
+            "categoria":"Tratamientos corporales",
+            "descripcion":""
+            
+        },
+        {
+            "id":"olivo",
+            "nombre":"Olivoterapia",
+            "tiempo":"90",
+            "comision":"12000",
+            "categoria":"Tratamientos corporales",
+            "descripcion":""
+            
+        },
+        {
+            "id":"choco",
+            "nombre":"Chocolaterapia",
+            "tiempo":"90",
+            "comision":"15000",
+            "categoria":"Tratamientos corporales",
+            "descripcion":""
+            
+        },
+        {
+            "id":"dayuse",
+            "nombre":"Day use",
+            "tiempo":"150",
+            "comision":"95000",
+            "categoria":"Programas individuales",
+            "descripcion":"", 
+            "detalle": [
+                "circuito de agua",
+                "exfoliacion corporal",
+                "piedras calientes"
+            ]
+                    
+        },
+        {
+            "id":"renov",
+            "nombre":"Renovacion",
+            "tiempo":"150",
+            "comision":"65000",
+            "categoria":"Programas individuales",
+            "descripcion":"",       
+            "detalle": [
+                "circuito de agua",
+                "olivoterapia"
+                
+            ]
+            
+        },
+        {
+            "id":"dulce",
+            "nombre":"Dulce aventura en el Bosque",
+            "tiempo":"150",
+            "comision":"80000",
+            "categoria":"Programas individuales",
+            "descripcion":"",
+            "detalle": [
+                "circuito de agua",
+                "Chocolaterapia"
+            ]
+        
+            
+        },
+        {
+            "id":"cto",
+            "nombre":"circuito de agua",
+            "tiempo":"45",
+            "comision":"16000",
+            "categoria":"servicio individual",
+            "descripcion":""        
+                        
+        },
+        {
+            "id":"sauna",
+            "nombre":"Sauna",
+            "tiempo":"40",
+            "comision":"14000",
+            "categoria":"servicio individual",
+            "descripcion":""        
+            
+        }
+    ]
+}
