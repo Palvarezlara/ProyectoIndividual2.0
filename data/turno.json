@@ -1,0 +1,11 @@
+{
+    "turno": [
+        {
+            "idturno":"",
+            "fecha":"",
+            "horaIngreso":"",
+            "horaSalida":"",
+            "terapeuta":""
+        }
+]
+}

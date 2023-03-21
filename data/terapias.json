@@ -1,8 +1,8 @@
 {
     "active":true,
-    "servicios":    [
+    "terapias":    [
         {
-            "id":"",
+            "idservicios":"mexpress",
             "nombre":"Masaje expres",
             "tiempo":"20",
             "comision":"4500",
@@ -12,7 +12,7 @@
             
         },
         {
-            "id":"",
+            "idservicios":"mninos",
             "nombre":"Masaje de niños",
             "tiempo":"20",
             "comision":"4500",
@@ -22,7 +22,7 @@
             
         },
         {
-            "id":"mas30",
+            "idservicios":"mas30",
             "nombre":"Masaje de Relajación",
             "tiempo":"30",
             "comision":"6500",
@@ -32,7 +32,7 @@
             
         },
         {
-            "id":"mas40",
+            "idservicios":"mas40",
             "nombre":"Masaje de Relajación",
             "tiempo":"40",
             "comision":"7500",
@@ -42,7 +42,7 @@
             
         },
         {
-            "id":"mas60",
+            "idservicios":"mas60",
             "nombre":"Masaje de Relajación",
             "tiempo":"60",
             "comision":"8500",
@@ -52,7 +52,7 @@
             
         },
         {
-            "id":"bosq30",
+            "idservicios":"bosq30",
             "nombre":"Masaje del Bosque",
             "tiempo":"30",
             "comision":"00",
@@ -62,7 +62,7 @@
             
         },
         {
-            "id":"bosq40",
+            "idservicios":"bosq40",
             "nombre":"Masaje de Bosque",
             "tiempo":"40",
             "comision":"9000",
@@ -72,7 +72,7 @@
             
         },
         {
-            "id":"bosq60",
+            "idservicios":"bosq60",
             "nombre":"Masaje de Bosque",
             "tiempo":"60",
             "comision":"10000",
@@ -82,7 +82,7 @@
             
         },
         {
-            "id":"desc30",
+            "idservicios":"desc30",
             "nombre":"Masaje Descontracturante",
             "tiempo":"30",
             "comision":"7500",
@@ -92,7 +92,7 @@
             
         },
         {
-            "id":"desc40",
+            "idservicios":"desc40",
             "nombre":"Masaje Descontracturante",
             "tiempo":"40",
             "comision":"9000",
@@ -102,7 +102,7 @@
             
         },
         {
-            "id":"desc60",
+            "idservicios":"desc60",
             "nombre":"Masaje Descontracturante",
             "tiempo":"60",
             "comision":"12000",
@@ -112,7 +112,7 @@
             
         },
         {
-            "id":"emba",
+            "idservicios":"emba",
             "nombre":"Masaje de embarazada",
             "tiempo":"40",
             "comision":"9000",
@@ -122,7 +122,7 @@
             
         },
         {
-            "id":"refl40",
+            "idservicios":"refl40",
             "nombre":"Reflexologia podal",
             "tiempo":"50",
             "comision":"10000",
@@ -132,7 +132,7 @@
             
         },
         {
-            "id":"ayur50",
+            "idservicios":"ayur50",
             "nombre":"Masaje Ayurvedico",
             "tiempo":"50",
             "comision":"10000",
@@ -142,7 +142,7 @@
             
         },
         {
-            "id":"drenloc",
+            "idservicios":"drenloc",
             "nombre":"Drenaje Linfatico",
             "tiempo":"40",
             "comision":"9000",
@@ -152,7 +152,7 @@
             
         },
         {
-            "id":"drencom",
+            "idservicios":"drencom",
             "nombre":"Drenaje Linfatico",
             "tiempo":"60",
             "comision":"10000",
@@ -162,7 +162,7 @@
             
         },
         {
-            "id":"pied60",
+            "idservicios":"pied60",
             "nombre":"Masaje de piedras calientes",
             "tiempo":"60",
             "comision":"12000",
@@ -171,7 +171,7 @@
             
         },
         {
-            "id":"exf30",
+            "idservicios":"exf30",
             "nombre":"Exfoliación corporal",
             "tiempo":"30",
             "comision":"7500",
@@ -180,7 +180,7 @@
             
         },
         {
-            "id":"envchoc",
+            "idservicios":"envchoc",
             "nombre":"Envoltura de Chocolate",
             "tiempo":"50",
             "comision":"10000",
@@ -189,7 +189,7 @@
             
         },
         {
-            "id":"envcane",
+            "idservicios":"envcane",
             "nombre":"Envoltura de Canela",
             "tiempo":"50",
             "comision":"10000",
@@ -198,7 +198,7 @@
             
         },
         {
-            "id":"olivo",
+            "idservicios":"olivo",
             "nombre":"Olivoterapia",
             "tiempo":"90",
             "comision":"12000",
@@ -207,7 +207,7 @@
             
         },
         {
-            "id":"choco",
+            "idservicios":"choco",
             "nombre":"Chocolaterapia",
             "tiempo":"90",
             "comision":"15000",
@@ -216,7 +216,7 @@
             
         },
         {
-            "id":"dayuse",
+            "idservicios":"dayuse",
             "nombre":"Day use",
             "tiempo":"150",
             "comision":"95000",
@@ -230,7 +230,7 @@
                     
         },
         {
-            "id":"renov",
+            "idservicios":"renov",
             "nombre":"Renovacion",
             "tiempo":"150",
             "comision":"65000",
@@ -244,7 +244,7 @@
             
         },
         {
-            "id":"dulce",
+            "idservicios":"dulce",
             "nombre":"Dulce aventura en el Bosque",
             "tiempo":"150",
             "comision":"80000",
@@ -258,7 +258,7 @@
             
         },
         {
-            "id":"cto",
+            "idservicios":"cto",
             "nombre":"circuito de agua",
             "tiempo":"45",
             "comision":"16000",
@@ -267,7 +267,7 @@
                         
         },
         {
-            "id":"sauna",
+            "idservicios":"sauna",
             "nombre":"Sauna",
             "tiempo":"40",
             "comision":"14000",
