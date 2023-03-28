@@ -14,4 +14,6 @@ app.set('views' , './views');
 app.use(express.static("public"));
 
 
-app.listen(3000);
+app.listen(3000, function(){
+    console.log("servidor en puerto 3000")
+});

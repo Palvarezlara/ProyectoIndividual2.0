@@ -1,0 +1,30 @@
+<head>
+    {{> head}}
+    <link rel="stylesheet" href=".\src\css\login.css">
+</head>
+{{#> plantillaExterna}}
+<div Class="login-box">
+    <h2>Ingreso</h2>
+    <form action="login1" method="post">
+        <div class=" user-box">
+            <input type="text" name="username" required>
+            <label class="input"> Usuario </label>
+
+        </div>
+        <div class="user-box">
+            <input type="password" name="password" required>
+            <label>Contraseña</label>
+        </div>
+        <button type="submit" class="botonenviar">
+        <a href="/perfil">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Entrar
+        </a>
+        </button>
+    </form>
+</div>
+
+{{/plantillaExterna}}

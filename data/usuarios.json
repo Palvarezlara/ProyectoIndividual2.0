@@ -1,11 +1,54 @@
 {
     "usuarios": [
-        { 
+        {
             "Idusuario": "",
-            "correo": "cedavilu@gmail.com",
-            "password": "$2y$10$Gw\/.t1OpSvWZ4l2Erj13WO49iXoLV2PAZrOM8S1Pqv4m1bo\/UDkJq",
+            "nombre":"",
+            "correo": "tabrilm@gmail.com",
+            "password": "23456789",
+            "avatar": "5dc47dd17d551.jpg",
+            "role": 2
+        },
+        {
+            "Idusuario": "",
+            "nombre":"",
+            "correo": "pmalicettm@gmail.com",
+            "password": "23456789",
+            "avatar": "5dc47dd17d551.jpg",
+            "role": 2
+        },
+        {
+            "Idusuario": "",
+            "nombre":"",
+            "correo": "Cnavarro@gmail.com",
+            "password": "23456789",
+            "avatar": "5dc47dd17d551.jpg",
+            "role": 2
+        },
+        {
+            "Idusuario": "Cnavarro",
+            "nombre":"",
+            "correo": "Cnavarro@gmail.com",
+            "password": "23456789",
+            "avatar": "5dc47dd17d551.jpg",
+            "role": 2
+        }
+    ],
+    "admin": [
+        {
+            "Idusuario": "Palvarez",
+            "nombre":"",
+            "correo": "palvarezlara@gmail.com",
+            "password": "123456789",
+            "avatar": "5dc47dd17d551.jpg",
+            "role": 1
+        },
+        {
+            "Idusuario": "Vschiappacasse",
+            "nombre":"",
+            "correo": "Vschiappacasse@gmail.com",
+            "password": "23456789",
             "avatar": "5dc47dd17d551.jpg",
             "role": 1
         }
-] 
+    ]
 }
