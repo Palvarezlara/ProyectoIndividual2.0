@@ -52,7 +52,9 @@ body {
 input[type=date]:required:invalid::-webkit-datetime-edit {
     color: transparent;
 }
-
+a {
+    color: #fff!important;
+  }
 select{
     width: 100%;
     padding: 10px 0;

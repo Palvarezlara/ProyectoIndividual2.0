@@ -43,15 +43,19 @@ router.use(passport.session())
 //----estrategia para hacer el login
 passport.use(new PassPortLocal(function(username, password, done){
 
-    conexion.query(`SELECT correo, idusuario, clave from usuario where correo like '${username}'`, (error, res, fields)=>{
+    conexion.query(`select u.idusuario as id, u.correo as correo, u.clave as clave, t.nombre as nombre, t.apellido as apellido, t.cargo as cargo
+    from usuario u 
+    join terapeutas t on (t.rut = u.terapeutas_rut)
+    where correo like'${username}'`, (error, res, fields)=>{
         if(error){
             throw error
         }else {
             if(res.length >0){
                 let us = res[0]
+                
                 if(username == us.correo && password == us.clave){
 
-                    return done(null,{id: us.idusuario, name: us.correo})
+                    return done(null,{id: us.id, correo: us.correo, name: us.nombre, apellido: us.apellido, cargo: us.cargo })
                 }
             }
             
@@ -68,9 +72,6 @@ passport.deserializeUser(function(user, done){
     done(null, user)
 })
 
-
-
-
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({extended: false}))
 router.get("/", (req,res) =>{
@@ -85,15 +86,25 @@ router.get("/login", (req,res)=>{
     res.render("login")
 })
 
-router.get("/perfil", (req,res) =>{
+router.post("/terapias",(req,res)=>{
+    console.log(req.body)
     res.render("perfil")
 })
 
 router.post("/login1", passport.authenticate("local", {failureRedirect: "/login"}),
                 (req, res)=>{
-                    res.render("perfil")
+                    let nombre = req.session.passport.user.name
+                    res.render("perfil", {nombre})
+                    
+})
+router.get("/perfil", (req,res) =>{
+    res.render("perfil")
+})
+router.get("/manualrecep", (req,res)=>{
+    res.render("manualrecep")
 })
 
-
-
+router.get("/manualterap", (req,res)=>{
+    res.render("manualterap")
+})
 export default router

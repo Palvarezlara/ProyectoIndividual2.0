@@ -8,10 +8,8 @@ body {
   background: linear-gradient(#3aaea1, #c7ee7a);
 }
 .container {
-    width: 400px;
-
-    border: 1px solid #070707;
-    
+  display:grid;
+  place-items: center;
 }
 .col{
   width: 100%;
@@ -32,6 +30,7 @@ body {
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
+  
 }
 .login-box h2 {
   padding: 0;

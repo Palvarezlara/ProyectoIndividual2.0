@@ -1,13 +1,13 @@
 <div Class="login-box">
-    <h2>¡Hola Nombre!</h2>
-    <form>
+    <h2>¡Hola {{nombre}}!</h2>
+    <form action="terapias" method="post">
         <div class=" user-box">
-            <input type="date" name="" required="" class="fechainput" id="fecha">
+            <input type="date" name="fecha" required="" class="fechainput" id="fecha">
             <label class="input">Fecha</label>
 
         </div>
         <div class="user-box">
-            <input type="number" name="" required="">
+            <input type="number" name="comanda" required="">
             <label>Comanda</label>
         </div>
         <div class="user-box" id="inputSelect">
@@ -37,7 +37,7 @@
             {{!-- <label>Terapia</label> --}}
         </div>
         <button class="botonEnviar" type="submit">
-            <a href="/perfil">
+            <a >
                 <span></span>
                 <span></span>
                 <span></span>
