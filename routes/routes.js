@@ -97,8 +97,13 @@ router.post("/login1", passport.authenticate("local", {failureRedirect: "/login"
                     res.render("perfil", {nombre})
                     
 })
+
 router.get("/perfil", (req,res) =>{
     res.render("perfil")
+})
+
+router.get("/reportes", (req,res) =>{
+    res.render("reportes")
 })
 router.get("/manualrecep", (req,res)=>{
     res.render("manualrecep")
