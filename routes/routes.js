@@ -3,7 +3,8 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import passport from "passport";
 import PassportLocal from "passport-local";
-import mysql from "mysql";
+//import mysql from "mysql";
+import mysql from "mysql2";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 const router = Router()
@@ -11,21 +12,18 @@ const PassPortLocal = PassportLocal.Strategy // para crear la estrategia de aunt
 
 dotenv.config()
 
-const conexion = mysql.createConnection({
-    host: process.env.DB_HOST,
-    database: process.env.DB,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS
+// parametros
 
-});
+ 
 
-conexion.connect((error)=>{
-if(error){
-    throw error
-}else{
-    console.log("conexion exitosa")
-}
-});
+// conexion.connect((error)=>{
+// if(error){
+//     throw error
+// }else{
+//     console.log("conexion exitosa")
+// }
+// });
+
 //configurar cookie-parser
 router.use(cookieParser("secretKey"))
 
@@ -74,8 +72,9 @@ passport.deserializeUser(function(user, done){
 
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({extended: false}))
+
 router.get("/", (req,res) =>{
-    res.render("home")
+    res.render("login")
 })
 
 router.get("/home", (req,res)=>{
@@ -111,5 +110,9 @@ router.get("/manualrecep", (req,res)=>{
 
 router.get("/manualterap", (req,res)=>{
     res.render("manualterap")
+})
+
+router.get("/mantenedor", (req,res)=>{
+    res.render("mantenedor")
 })
 export default router
