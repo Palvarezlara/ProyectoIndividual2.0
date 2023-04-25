@@ -9,3 +9,12 @@ export const conexion = createPool({
     password: process.env.DB_PASS
 
 });
+// 
+ conexion.connect((error)=>{
+ if(error){
+     throw error
+     
+ }else{
+     console.log("conexion exitosa a la BD")
+ }
+ });

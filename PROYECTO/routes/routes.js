@@ -12,17 +12,6 @@ const PassPortLocal = PassportLocal.Strategy // para crear la estrategia de aunt
 
 dotenv.config()
 
-// parametros
-
- 
-
-// conexion.connect((error)=>{
-// if(error){
-//     throw error
-// }else{
-//     console.log("conexion exitosa")
-// }
-// });
 
 //configurar cookie-parser
 router.use(cookieParser("secretKey"))
@@ -41,19 +30,18 @@ router.use(passport.session())
 //----estrategia para hacer el login
 passport.use(new PassPortLocal(function(username, password, done){
 
-    conexion.query(`select u.idusuario as id, u.correo as correo, u.clave as clave, t.nombre as nombre, t.apellido as apellido, t.cargo as cargo
-    from usuario u 
-    join terapeutas t on (t.rut = u.terapeutas_rut)
-    where correo like'${username}'`, (error, res, fields)=>{
+    conexion.query(`select rut, nombre, apellido, cargo, contrasena
+    from funcionarias 
+    where rut like'${username}'`, (error, res, fields)=>{
         if(error){
             throw error
         }else {
             if(res.length >0){
                 let us = res[0]
                 
-                if(username == us.correo && password == us.clave){
+                if(username == us.rut && password == us.contrasena){
 
-                    return done(null,{id: us.id, correo: us.correo, name: us.nombre, apellido: us.apellido, cargo: us.cargo })
+                    return done(null,{id: us.rut, correo: us.correo, name: us.nombre, apellido: us.apellido, cargo: us.cargo })
                 }
             }
             
@@ -85,9 +73,17 @@ router.get("/login", (req,res)=>{
     res.render("login")
 })
 
+router.get("/crearUsuario", (req,res)=>{
+    res.render("crearUsuario")
+})
 router.post("/terapias",(req,res)=>{
     console.log(req.body)
     res.render("perfil")
+})
+
+router.post("/save",(req,res)=>{
+    console.log(req.body)
+    res.render("mantenedor")
 })
 
 router.post("/login1", passport.authenticate("local", {failureRedirect: "/login"}),
