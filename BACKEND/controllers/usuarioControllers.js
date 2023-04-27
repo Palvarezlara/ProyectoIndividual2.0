@@ -15,6 +15,26 @@ export const obtenerUsuarios = async (req, res) => {
     });
   }
 };
+//para el login
+export const comprobarUsuario = async (req, res)=> {
+   const {
+    rut,
+    contrasena
+  }=req.body;
+  
+  try {
+    const [usuarios] = await pool.query(
+      `SELECT nombre, apellido, rol, email, rut FROM funcionarias where rut like ? AND contrasena like ? AND activo = true`, [rut, contrasena]
+    );
+    res.json(usuarios);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      mensaje: "Algo salio muy mal",
+  });
+  }
+}
+
 
 //Para crear usuarios nuevos
 export const crearUsuario = async (req, res) => {

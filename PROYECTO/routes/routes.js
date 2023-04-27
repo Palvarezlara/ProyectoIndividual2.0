@@ -27,29 +27,29 @@ router.use(session({
 router.use(passport.initialize())
 router.use(passport.session())
 
-//----estrategia para hacer el login
-passport.use(new PassPortLocal(function(username, password, done){
-
-    conexion.query(`select rut, nombre, apellido, cargo, contrasena
-    from funcionarias 
-    where rut like'${username}'`, (error, res, fields)=>{
-        if(error){
-            throw error
-        }else {
-            if(res.length >0){
-                let us = res[0]
-                
-                if(username == us.rut && password == us.contrasena){
-
-                    return done(null,{id: us.rut, correo: us.correo, name: us.nombre, apellido: us.apellido, cargo: us.cargo })
-                }
-            }
-            
-            return done (null,false)
-        }
+//----estrategia para hacer el login de ir en la API OJO
+passport.use(new PassPortLocal(async function(username, password, done){
+    
+    const comprobacion = await fetch("http://localhost:4000/api/comprobarUsuario",{
+        method:'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            rut: username,
+            contrasena: password
+        })
     })
+    let data = await comprobacion.json()
+        const us = data[0]            
+        console.log(data.length)
+            if (data.length === 0){
+                return done (null,false,{Mensaje: 'Usuario incorrecto'} )
+            } else {
+                return done(null,{id: us.rut, email: us.email, name: us.nombre, apellido: us.apellido, rol: us.rol })
+            } 
+             
+            
 }))
-
+//guardar los datos de usuario
 passport.serializeUser(function(user,done){
     done(null, user);
 });
@@ -65,17 +65,23 @@ router.get("/", (req,res) =>{
     res.render("login")
 })
 
-router.get("/home", (req,res)=>{
-    res.render("home")
+router.post("/login1", passport.authenticate("local", {failureRedirect: "/"}),
+                (req, res)=>{
+                    let nombre = req.session.passport.user.name
+                    res.render("home", {nombre})
+                    
 })
 
-router.get("/login", (req,res)=>{
-    res.render("login")
+
+router.get("/home",(req, res, next)=>{
+    if (req.isAuthenticated()){
+        let nombre = req.session.passport.user.name
+        res.render("home", {nombre})
+    }else{
+        res.render("login")
+    }
 })
 
-router.get("/crearUsuario", (req,res)=>{
-    res.render("crearUsuario")
-})
 router.post("/terapias",(req,res)=>{
     console.log(req.body)
     res.render("perfil")
@@ -86,26 +92,40 @@ router.post("/save",(req,res)=>{
     res.render("mantenedor")
 })
 
-router.post("/login1", passport.authenticate("local", {failureRedirect: "/login"}),
-                (req, res)=>{
-                    let nombre = req.session.passport.user.name
-                    res.render("perfil", {nombre})
-                    
+router.get("/perfil", (req, res, next)=>{
+    if(req.isAuthenticated()){
+        let nombre = req.session.passport.user.name
+        res.render("perfil", {nombre})
+    }else{
+        res.render("login")
+    }
 })
 
-router.get("/perfil", (req,res) =>{
-    res.render("perfil")
+router.get("/reportes", (req, res, next)=>{
+    if(req.isAuthenticated()){
+        let nombre = req.session.passport.user.name
+        res.render("reportes", {nombre})
+    }else{
+        res.render("login")
+    }
 })
 
-router.get("/reportes", (req,res) =>{
-    res.render("reportes")
-})
-router.get("/horario", (req,res)=>{
-    res.render("horario")
+router.get("/horario", (req, res, next)=>{
+    if(req.isAuthenticated()){
+        let nombre = req.session.passport.user.name
+        res.render("horario", {nombre})
+    }else{
+        res.render("login")
+    }
 })
 
-router.get("/manualterap", (req,res)=>{
-    res.render("manualterap")
+router.get("/manualterap", (req, res, next)=>{
+    if(req.isAuthenticated()){
+        let nombre = req.session.passport.user.name
+        res.render("manualterap", {nombre})
+    }else{
+        res.render("login")
+    }
 })
 
 router.get("/mantenedor", (req,res)=>{
