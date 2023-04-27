@@ -100,8 +100,8 @@ router.get("/perfil", (req,res) =>{
 router.get("/reportes", (req,res) =>{
     res.render("reportes")
 })
-router.get("/manualrecep", (req,res)=>{
-    res.render("manualrecep")
+router.get("/horario", (req,res)=>{
+    res.render("horario")
 })
 
 router.get("/manualterap", (req,res)=>{

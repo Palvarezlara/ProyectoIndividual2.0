@@ -52,6 +52,9 @@ body {
 input[type=date]:required:invalid::-webkit-datetime-edit {
     color: transparent;
 }
+input[type=time]:required:invalid::-webkit-datetime-edit {
+    color: transparent;
+}
 a {
     color: #fff!important;
   }

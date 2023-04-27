@@ -1,0 +1,35 @@
+<head>
+    {{> head}}
+    
+    <link rel="stylesheet" href=".\src\css\formulario.css">
+</head>
+
+<div Class="login-box">
+    <h2>¡Hola {{nombre}}!</h2>
+    <form action="horario" method="post">
+        <div class=" user-box">
+            <input type="date" name="fecha" required="" class="fechainput" id="fecha">
+            <label class="input">Fecha</label>
+
+        </div>
+        <div class="user-box">
+            <input type="time" name="comanda" required="">
+            <label>Hora Inicio</label>
+        </div>
+        <div class="user-box">
+            <input type="time" name="comanda" required="">
+            <label>Hora Salida</label>
+        </div>
+        {{!-- Crear vista, para que se vean las ultimos días ingresados por lo menos ultimos 3--}}
+        
+        <button class="botonEnviar" type="submit">
+            <a >
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Enviar
+            </a>
+        </button>
+    </form>
+</div>
