@@ -56,6 +56,7 @@
           <th scope="col">Banco</th>
           <th scope="col">Número de cuenta</th>
           <th scope="col">Correo</th>
+          <th scope="col">Activo</th>
           <th scope="col">Acciones</th>
         </tr>
       </thead>
@@ -72,6 +73,7 @@
           <td>{{banco}}</td>
           <td>{{ncuenta}}</td>
           <td>{{correo}}</td>
+          <td>{{activo}}</td>
           <td>
             {{!-- Aqui va los botones que nos llevaran a las funciones para mostrar --}}
             <a href="/modificarUsuario" class="btn btn-outline-success">Editar</a>
@@ -156,11 +158,70 @@
     </div>
   </div>
 
+<!-- Editar Usuario Modal -->
+<div class="modal fade" id="editarUsuarioModal" tabindex="-1" aria-labelledby="editarUsuarioModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" id="editarUsuarioModalContent">
+      <div class="card border-secondary">
+        <div class="card-header">Editar Usuario</div>
+        <div class="card-body">
+          <form action="/update" method="PUT" id="formEditarUsuario" >
+            <div class="mb-3">
+              <label for="editar-nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="editar-nombre" name="nombre" tabindex="1" required />
+            </div>
+            <div class="mb-3">
+              <label for="editar-apellido" class="form-label">Apellido</label>
+              <input type="text" class="form-control" id="editar-apellido" name="apellido" tabindex="1" required />
+            </div>
+            <div class="mb-3">
+              <label for="editar-rol" class="form-label">Cargo</label>
+              <select id="editar-rol" name="rol" id="" class="form-select" placeholder="Seleccionar opción" required>
+                <option value="Recepcion" >Recepción</option>
+                <option value="Admin" >Admin</option>
+                <option value="Terapeuta" >Terapeuta</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="editar-fechaIngreso" class="form-label">Fecha Ingreso</label>
+              <input type="date" class="form-control" id="editar-fechaIngreso" name="dateInicio" tabindex="1" required />
+            </div>
+            <div class="mb-3">
+              <label for="editar-fechaNaci" class="form-label">Fecha Nacimiento</label>
+              <input type="date" class="form-control" id="editar-fechaNaci" name="fechaNaci" tabindex="1" required />
+            </div>
+            <div class="mb-3">
+                <label for="editar-especialidad" class="form-label">Especialidad</label>
+                <input type="text" class="form-control" id="editar-especialidad" name="especialidad" tabindex="1" required />
+              </div>
+              <div class="mb-3">
+                <label for="editar-banco" class="form-label">Banco</label>
+                <input type="text" class="form-control" id="editar-banco" name="banco" tabindex="1" required />
+              </div>
+              <div class="mb-3">
+                <label for="editar-ncuenta" class="form-label">Cuenta</label>
+                <input type="number" class="form-control" id="editar-ncuenta" name="ncuenta" tabindex="1" required />
+              </div>
+              <div class="mb-3">
+                <label for="editar-email" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="editar-email" name="email" tabindex="1" oninput="validarEmail()"
+                  required />
+                <div id="mensajeEmail"></div>
+              </div>
+              <button type="submit" class="btn btn-success" id="guardarCambios" tabindex="5">Guardar</button>
+              <a href="/mantenedor" class="btn btn-secondary">Cancelar</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', obtenerUsuarios);
     function submitForm(e) {
       e.preventDefault();
-      // Asegúrate de que tu formulario tenga el atributo 'id' correcto
       const form = document.getElementById("formCrearUsuario");
       const formData = new FormData(form);
 

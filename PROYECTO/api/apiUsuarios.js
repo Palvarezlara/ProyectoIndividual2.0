@@ -21,7 +21,7 @@ async function enviarDatosFormulario(formData) {
         icon: "success",
         confirmButtonText: "OK",
       }).then(() => {
-        window.location.href = "/mantenedor";
+        location.reload();
       });
     } else {
       // Si hay algún error, muestra una alerta de error
@@ -68,7 +68,7 @@ function renderUsuarios(usuarios) {
     const formattedFechaIngreso = formatDate(usuario.fechaIngreso);
     const formattedFechaNaci = formatDate(usuario.fechaNaci);
     const row = `
-      <tr>
+      <tr data-rut="${usuario.rut}">
         <td>${usuario.rut}</td>
         <td>${usuario.nombre}</td>
         <td>${usuario.apellido}</td>
@@ -79,8 +79,9 @@ function renderUsuarios(usuarios) {
         <td>${usuario.banco}</td>
         <td>${usuario.ncuenta}</td>
         <td>${usuario.email}</td>
+        <td>${usuario.activo}</td> 
         <td>
-          <button type="button" class="btn btn-primary" onclick="editarUsuario('${usuario.rut}')">Editar</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal"data-rut="${usuario.rut}" onclick="editarUsuario(this.getAtribute('data-rut'))" data-bs-target="#editarUsuarioModal">Editar</button>
           <button type="button" class="btn btn-danger" onclick="borrarUsuario('${usuario.rut}')">Borrar</button>
         </td>
       </tr>`;
@@ -137,72 +138,89 @@ function borrarUsuario(rut) {
 }
 
 // MODIFICAR USUARIO
-async function actualizarUsuario(event) {
+function editarUsuario(rut) {
+  // Buscar la fila de la tabla que contiene el rut del usuario
+  const filaUsuario = document.querySelector(
+    `table tbody tr[data-rut="${rut}"]`
+  );
+// Extraer la información de la fila
+const nombre = filaUsuario.querySelector("td:nth-child(2)").innerText;
+const apellido = filaUsuario.querySelector("td:nth-child(3)").innerText;
+const rol = filaUsuario.querySelector("td:nth-child(4)").innerText;
+//const fechaIngreso = filaUsuario.querySelector("td:nth-child(5)").innerText;
+//const fechaNaci = filaUsuario.querySelector("td:nth-child(6)").innerText;
+const especialidad = filaUsuario.querySelector("td:nth-child(7)").innerText;
+const banco = filaUsuario.querySelector("td:nth-child(8)").innerText;
+const ncuenta = filaUsuario.querySelector("td:nth-child(9)").innerText;
+const email = filaUsuario.querySelector("td:nth-child(10)").innerText;
+
+const fechaIngreso = filaUsuario.querySelector("td:nth-child(5)").innerText;
+const fechaIngresoFormateada = fechaIngreso.split("/").reverse().join("-");
+
+const fechaNaci = filaUsuario.querySelector("td:nth-child(6)").innerText;
+const fechaNaciFormateada = fechaNaci.split("/").reverse().join("-");
+
+console.log(fechaIngreso, fechaNaciFormateada);
+
+// Cargar la información del usuario en el modal
+document.querySelector("#editar-nombre").value = nombre;
+document.querySelector("#editar-apellido").value = apellido;
+document.querySelector("#editar-rol").value = rol;
+document.querySelector("#editar-fechaIngreso").value = fechaIngresoFormateada;
+document.querySelector("#editar-fechaNaci").value = fechaNaciFormateada;
+document.querySelector("#editar-especialidad").value = especialidad;
+document.querySelector("#editar-banco").value = banco;
+document.querySelector("#editar-ncuenta").value = ncuenta;
+document.querySelector("#editar-email").value = email;
+
+// Manejar el envío del formulario al hacer click en el botón "Guardar"
+const botonGuardar = document.querySelector("#guardarCambios");
+botonGuardar.addEventListener("click", (event) => {
   event.preventDefault();
+  const formulario = event.target.closest("form");
+  const formData = new FormData(formulario);
+  console.log(rut);
+  actualizarUsuario(formData, rut);
+});
+}
 
-  const form = document.querySelector("#form-usuario");
-  const rut = form.rut.value;
-  const nombre = form.nombre.value;
-  const apellido = form.apellido.value;
-  const rol = form.rol.value;
-  const fechaIngreso = form.fechaIngreso.value;
-  const fechaNaci = form.fechaNaci.value;
-  const especialidad = form.especialidad.value;
-  const banco = form.banco.value;
-  const ncuenta = form.ncuenta.value;
-  const email = form.email.value;
-  const contrasena = form.contrasena.value;
-
-  try {
-    const response = await fetch(
-      `http://localhost:4000/api/modificarUsuario/${rut}`,
-      {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nombre,
-          apellido,
-          rol,
-          fechaIngreso,
-          fechaNaci,
-          especialidad,
-          banco,
-          ncuenta,
-          email,
-          contrasena,
-        }),
-      }
-    );
-
-    const { registrosActualizados } = await response.json();
-
-    if (registrosActualizados === 1) {
-      Swal.fire({
-        title: "Actualizado",
-        text: `El usuario con rut ${rut} ha sido actualizado`,
-        icon: "success",
-        confirmButtonText: "OK",
-      }).then(() => {
-        // Cerramos el modal después de actualizar el usuario
-        $("#modal-usuario").modal("hide");
-        // Actualizamos la tabla después de actualizar el usuario
-        obtenerUsuarios();
-      });
-    } else {
-      Swal.fire({
-        title: "Error",
-        text: "No se ha podido actualizar el usuario",
-        icon: "error",
-        confirmButtonText: "OK",
-      });
+async function actualizarUsuario(formData, rut) {
+const json = formDataToJson(formData);
+console.log(json);
+try {
+  const response = await fetch(
+    `http://localhost:4000/api/modificarUsuario/${rut}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: json,
     }
-  } catch (error) {
-    console.error("Error al actualizar el usuario:", error);
+  );
+
+  if (response.ok) {
     Swal.fire({
-      title: "Error",
-      text: "No se ha podido actualizar el usuario",
+      icon: "success",
+      title: "Usuario actualizado correctamente",
+      showConfirmButton: false,
+      timer: 1500,
+    }).then(() => {
+      location.reload(); // Recarga la página para actualizar la tabla
+    });
+  } else {
+    Swal.fire({
       icon: "error",
-      confirmButtonText: "OK",
+      title: "Error al actualizar el usuario",
+      text: "Ha ocurrido un error al intentar actualizar el usuario. Por favor, inténtalo de nuevo.",
     });
   }
+} catch (error) {
+  console.error("Error en la petición:", error);
+  Swal.fire({
+    icon: "error",
+    title: "Error al actualizar el usuario",
+    text: "Ha ocurrido un error al intentar actualizar el usuario. Por favor, inténtalo de nuevo.",
+  });
+}
 }

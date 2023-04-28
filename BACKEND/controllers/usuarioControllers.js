@@ -15,7 +15,7 @@ export const obtenerUsuarios = async (req, res) => {
     });
   }
 };
-//para el login
+//para comprobar la información del usuario y hacer el login
 export const comprobarUsuario = async (req, res)=> {
    const {
     rut,
@@ -95,6 +95,7 @@ export const crearUsuario = async (req, res) => {
 
 //MODIFICAR USUARIO
 export const modificarUsuario = async (req, res) => {
+  console.log("Solicitud recibida:", req.body);
   try {
     // Obtener el rut del usuario a modificar desde los parámetros de la solicitud
     const { rut } = req.params;
@@ -104,18 +105,20 @@ export const modificarUsuario = async (req, res) => {
       nombre,
       apellido,
       rol,
-      fechaIngreso,
+      dateInicio,
       fechaNaci,
       especialidad,
       banco,
       ncuenta,
       email,
-      contrasena,
     } = req.body;
 
     // Crear una consulta SQL utilizando placeholders para evitar SQL injection
     const sql =
       "UPDATE funcionarias SET nombre = ?, apellido = ?, rol = ?, fechaIngreso = ?, fechaNaci = ?, especialidad = ?, banco = ?, ncuenta = ?, email = ?, contrasena = ? WHERE rut = ?";
+
+      //Formatear la fecha de ingreso
+    const fechaIngresoFormateada = moment(dateInicio).format("YYYY-MM-DD");
 
     console.log("Valores a insertar:", [
       rut,
@@ -128,14 +131,11 @@ export const modificarUsuario = async (req, res) => {
       banco,
       ncuenta,
       email,
-      contrasena,
+      
     ]);
 
-    // Formatear la fecha de ingreso
-    const fechaIngresoFormateada = moment(fechaIngreso).format("YYYY-MM-DD");
-
     // Ejecutar la consulta utilizando el pool de pooles
-    const [resultado] = await pool.query(sql, [
+    await pool.query(sql, [
       nombre,
       apellido,
       rol,
@@ -148,7 +148,7 @@ export const modificarUsuario = async (req, res) => {
       contrasena,
       rut,
     ]);
-    res.json({ registrosActualizados: resultado.affectedRows });
+    res.status(200).json("Usuario modificado con éxito");
   } catch (error) {
     // Devolver una respuesta con el error
     res.status(500).json({ error: error.message });
