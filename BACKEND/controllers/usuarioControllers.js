@@ -1,6 +1,24 @@
 import pool from "../db/conexion.js";
 import moment from "moment";
 
+//para comprobar la información del usuario y hacer el login
+export const comprobarUsuario = async (req, res) => {
+  const { rut, contrasena } = req.body;
+
+  try {
+    const [usuarios] = await pool.query(
+      `SELECT nombre, apellido, rol, email, rut FROM funcionarias where rut like ? AND contrasena like ? AND activo = true`,
+      [rut, contrasena]
+    );
+    res.json(usuarios);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      mensaje: "Algo salio muy mal",
+    });
+  }
+};
+
 //para obtener todos los usuarios de la tabla
 export const obtenerUsuarios = async (req, res) => {
   try {
@@ -15,26 +33,6 @@ export const obtenerUsuarios = async (req, res) => {
     });
   }
 };
-//para comprobar la información del usuario y hacer el login
-export const comprobarUsuario = async (req, res)=> {
-   const {
-    rut,
-    contrasena
-  }=req.body;
-  
-  try {
-    const [usuarios] = await pool.query(
-      `SELECT nombre, apellido, rol, email, rut FROM funcionarias where rut like ? AND contrasena like ? AND activo = true`, [rut, contrasena]
-    );
-    res.json(usuarios);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      mensaje: "Algo salio muy mal",
-  });
-  }
-}
-
 
 //Para crear usuarios nuevos
 export const crearUsuario = async (req, res) => {
@@ -46,7 +44,7 @@ export const crearUsuario = async (req, res) => {
       nombre,
       apellido,
       rol,
-      fechaIngreso,
+      dateInicio,
       fechaNaci,
       especialidad,
       banco,
@@ -67,7 +65,7 @@ export const crearUsuario = async (req, res) => {
         .json({ mensaje: "El email electrónico ingresado no es válido" });
     } */
 
-    const fechaIngresoFormateada = moment(fechaIngreso).format("YYYY-MM-DD");
+    const fechaIngresoFormateada = moment(dateInicio).format("YYYY-MM-DD");
     // Crear una consulta SQL utilizando placeholders para evitar SQL injection
     const sql =
       "INSERT INTO funcionarias (rut, nombre, apellido, rol, fechaIngreso, fechaNaci, especialidad, banco, ncuenta, email, contrasena) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -115,13 +113,12 @@ export const modificarUsuario = async (req, res) => {
 
     // Crear una consulta SQL utilizando placeholders para evitar SQL injection
     const sql =
-      "UPDATE funcionarias SET nombre = ?, apellido = ?, rol = ?, fechaIngreso = ?, fechaNaci = ?, especialidad = ?, banco = ?, ncuenta = ?, email = ?, contrasena = ? WHERE rut = ?";
+      "UPDATE funcionarias SET nombre = ?, apellido = ?, rol = ?, fechaIngreso = ?, fechaNaci = ?, especialidad = ?, banco = ?, ncuenta = ?, email = ? WHERE rut = ?";
 
-      //Formatear la fecha de ingreso
+    // Formatear la fecha de ingreso
     const fechaIngresoFormateada = moment(dateInicio).format("YYYY-MM-DD");
 
     console.log("Valores a insertar:", [
-      rut,
       nombre,
       apellido,
       rol,
@@ -131,7 +128,6 @@ export const modificarUsuario = async (req, res) => {
       banco,
       ncuenta,
       email,
-      
     ]);
 
     // Ejecutar la consulta utilizando el pool de pooles
@@ -145,7 +141,6 @@ export const modificarUsuario = async (req, res) => {
       banco,
       ncuenta,
       email,
-      contrasena,
       rut,
     ]);
     res.status(200).json("Usuario modificado con éxito");
