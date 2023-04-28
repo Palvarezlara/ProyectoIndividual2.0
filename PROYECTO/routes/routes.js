@@ -74,6 +74,9 @@ router.get("/", (req, res) => {
   res.render("login");
 });
 
+router.get("/reporteTerap", (req, res) => {
+  res.render("reporteTerap");
+});
 router.post(
   "/login1",
   passport.authenticate("local", { failureRedirect: "/" }),
@@ -119,6 +122,15 @@ router.get("/reportes", (req, res, next) => {
     res.render("login");
   }
 });
+
+// router.get("/reporteTerap", (req, res, next) => {
+//   if (req.isAuthenticated()) {
+//     let nombre = req.session.passport.user.name;
+//     res.render("reporteTerap", { nombre });
+//   } else {
+//     res.render("login");
+//   }
+// });
 
 router.get("/horario", (req, res, next) => {
   if (req.isAuthenticated()) {

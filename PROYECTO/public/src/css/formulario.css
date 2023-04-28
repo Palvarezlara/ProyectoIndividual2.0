@@ -52,9 +52,12 @@ body {
 input[type=date]:required:invalid::-webkit-datetime-edit {
     color: transparent;
 }
+input[type=time]:required:invalid::-webkit-datetime-edit {
+    color: transparent;
+}
 a {
     color: #fff!important;
-  }
+}
 select{
     width: 100%;
     padding: 10px 0;
@@ -70,7 +73,6 @@ select{
 }
 option{
     background: rgba(0, 0, 0, .6);
-    
 }
 
 .login-box .user-box label {
@@ -114,9 +116,10 @@ option{
     height: 44px;
     background-color: transparent;
     border: none;
-
 }
-
+#volver{
+    margin-left: 30px;
+}
 #input {
     width: 100%;
     padding: 16px 20px;
