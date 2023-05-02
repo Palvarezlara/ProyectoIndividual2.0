@@ -221,7 +221,7 @@
             "tiempo":"150",
             "comision":"19500",
             "categoria":"Programas individuales",
-            "descripcion":"", 
+            "descripcion":"",
             "detalle": [
                 "circuito de agua",
                 "exfoliacion corporal",
@@ -233,7 +233,7 @@
             "idservicios":"renov",
             "nombre":"Renovacion",
             "tiempo":"150",
-            "comision":"65000",
+            "comision":"12000",
             "categoria":"Programas individuales",
             "descripcion":"",       
             "detalle": [

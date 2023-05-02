@@ -66,6 +66,7 @@ export const crearUsuario = async (req, res) => {
     } */
 
     const fechaIngresoFormateada = moment(dateInicio).format("YYYY-MM-DD");
+    
     // Crear una consulta SQL utilizando placeholders para evitar SQL injection
     const sql =
       "INSERT INTO funcionarias (rut, nombre, apellido, rol, fechaIngreso, fechaNaci, especialidad, banco, ncuenta, email, contrasena) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
