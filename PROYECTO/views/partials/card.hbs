@@ -1,6 +1,10 @@
 <div Class="login-box">
     <h2>¡Hola {{nombre}}!</h2>
     <form action="terapias" method="post" id="formCrearServicio" onsubmit="submitForm(event)">
+        <div class="user-box">
+            <input type="text" for="rut" name="rut" id="rut" required disabled value="{{rut}}">
+            <label name="rut"></label>
+        </div>
         <div class=" user-box">
             <input type="date" for="fecha" name="fecha" required="" class="fechainput" id="fecha">
             <label class="input" name="fecha" id="fecha">Fecha</label>
@@ -11,35 +15,35 @@
             <label name="comanda" id="comanda">Comanda</label>
         </div>
         <div class="user-box" id="inputSelect">
-            <select name="terapias" id="terapias" for="terapias">
-                <option id="terpias" name="terapias">Seleccione terapia</option>
-                                    <option value="3" id="mas30">Masaje de Relajación de 30 min</option>
-                                    <option value="4" id="mas40">Masaje de Relajación de 40 min</option>
-                                    <option value="5" id="mas60">Masaje de Relajación de 60 min</option>
-                                    <option value="6" id="bosq30">Masaje del Bosque de 30 min</option>
-                                    <option value="7" id="bosq40">Masaje del Bosque de 40 min</option>
-                                    <option value="8" id="bosq60">Masaje del Bosque de 60 min</option>
-                                    <option value="9" id="desc30">Masaje Descontracturante de 30 min</option>
-                                    <option value="10" id="desc40">Masaje Descontracturante de 40 min</option>
-                                    <option value="11" id="desc60">Masaje Descontracturante de 60 min</option>
-                                    <option value="15" id="drenloc">Drenaje Linfatico localizado</option>
-                                    <option value="16" id="drencom">Drenaje linfatico completo</option>
-                                    <option value="12" id="emba">Masaje para Embarazada</option>
-                                    <option value="13" id="refl40">Reflexología podal de 40 min</option>
-                                    <option value="17" id="pied60">Piedras Calientes de 60 min</option>
-                                    <option value="14" id="ayur50">Masaje Ayurvedico de 50 min</option>
-                                    <option value="24" id="olivo">Olivoterapia de 90 min</option>
-                                    <option value="20" id="choco">Chocolaterapia de 90 min</option>
-                                    <option value="18" id="exfo30">Exfoliación corporal de 30 min</option>
-                                    <option value="19" id="envchoc">Envoltura de Chocolate </option>
-                                    <option value="21" id="dayuse">Day Use</option>
-                                    <option value="2" id="dayuse">Masaje de niños</option>
-                                    <option value="1" id="dayuse">Masaje Express</option>
+            <select name="idservicios" id="idservicios" for="idservicios">
+                <option id="terpias" name="idservicios">Seleccione terapia</option>
+                <option value="3" id="mas30">Masaje de Relajación de 30 min</option>
+                <option value="4" id="mas40">Masaje de Relajación de 40 min</option>
+                <option value="5" id="mas60">Masaje de Relajación de 60 min</option>
+                <option value="6" id="bosq30">Masaje del Bosque de 30 min</option>
+                <option value="7" id="bosq40">Masaje del Bosque de 40 min</option>
+                <option value="8" id="bosq60">Masaje del Bosque de 60 min</option>
+                <option value="9" id="desc30">Masaje Descontracturante de 30 min</option>
+                <option value="10" id="desc40">Masaje Descontracturante de 40 min</option>
+                <option value="11" id="desc60">Masaje Descontracturante de 60 min</option>
+                <option value="15" id="drenloc">Drenaje Linfatico localizado</option>
+                <option value="16" id="drencom">Drenaje linfatico completo</option>
+                <option value="12" id="emba">Masaje para Embarazada</option>
+                <option value="13" id="refl40">Reflexología podal de 40 min</option>
+                <option value="17" id="pied60">Piedras Calientes de 60 min</option>
+                <option value="14" id="ayur50">Masaje Ayurvedico de 50 min</option>
+                <option value="24" id="olivo">Olivoterapia de 90 min</option>
+                <option value="20" id="choco">Chocolaterapia de 90 min</option>
+                <option value="18" id="exfo30">Exfoliación corporal de 30 min</option>
+                <option value="19" id="envchoc">Envoltura de Chocolate </option>
+                <option value="21" id="dayuse">Day Use</option>
+                <option value="2" id="dayuse">Masaje de niños</option>
+                <option value="1" id="dayuse">Masaje Express</option>
             </select>
             {{!-- <label>Terapia</label> --}}
         </div>
         <button class="botonEnviar" type="submit">
-            <a >
+            <a>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -47,7 +51,7 @@
                 Enviar
             </a>
         </button>
-        <button id="volver" class="botonEnviar" type="button" >
+        <button id="volver" class="botonEnviar" type="button">
             <a href="/home">
                 <span></span>
                 <span></span>
@@ -59,14 +63,13 @@
     </form>
 </div>
 <script>
-    //document.addEventListener('DOMContentLoaded', crearComision);
-
     function submitForm(e) {
-      e.preventDefault();
-      const form = document.getElementById("formCrearServicio");
-      const formData = new FormData(form);
-
-      enviarDatosFormulario(formData);
+        e.preventDefault();
+        const form = document.getElementById("formCrearServicio");
+        const formData = new FormData(form);
+        formData.append('rut', document.getElementById("rut").value)
+        enviarDatosFormulario(formData);
+        location.reload()
     }
 
-  </script>
+</script>

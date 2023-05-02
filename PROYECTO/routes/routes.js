@@ -108,7 +108,8 @@ router.post("/save", (req, res) => {
 router.get("/perfil", (req, res, next) => {
   if (req.isAuthenticated()) {
     let nombre = req.session.passport.user.name;
-    res.render("perfil", { nombre });
+    let rut = req.session.passport.user.id
+    res.render("perfil", { nombre,rut});
   } else {
     res.render("login");
   }

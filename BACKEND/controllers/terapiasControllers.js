@@ -7,22 +7,22 @@ export const crearComision = async (req, res) => {
     try {
       // Obtener los datos del cuerpo de la solicitud
       const {
-        fecha,
-        comanda,
-        idservicios,
-        rut,
-      } = req.body;
+            fecha,
+            comanda,
+            rut,
+            idservicios
+       }=req.body;
 
       // Crear una consulta SQL utilizando placeholders para evitar SQL injection
       const sql =
-        "INSERT INTO bd_comisiones (fecha, comanda, rut, idservicios ) VALUES (?, ?, ?, ?,)";
-  
+        "INSERT INTO bd_comisiones (fecha, comanda, rut, idservicios ) VALUES (?, ?, ?, ?)";
+
       // Ejecutar la consulta utilizando el pool de pooles
       await pool.query(sql, [
         fecha,
         comanda,
-        idservicios,
         rut,
+        idservicios
       ]);
       res.status(200).json("comanda ingresada con éxito");
     } catch (error) {

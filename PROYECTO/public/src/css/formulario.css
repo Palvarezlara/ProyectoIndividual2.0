@@ -55,6 +55,13 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
 input[type=time]:required:invalid::-webkit-datetime-edit {
     color: transparent;
 }
+input[type=text]:required:invalid::-webkit-datetime-edit {
+    color: transparent;
+}
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
 a {
     color: #fff!important;
 }
@@ -71,6 +78,8 @@ select{
     background: rgba(0, 0, 0, .1);
 
 }
+
+
 option{
     background: rgba(0, 0, 0, .6);
 }

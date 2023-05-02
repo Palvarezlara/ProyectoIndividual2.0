@@ -55,5 +55,45 @@ async function enviarDatosFormulario(formData) {
 //CREAR SERVICIO NUEVO DESDE EL REPORTE MODAL
 
 //OBTENER LOS SERVICIOS PARA MOSTRAR EN LA TABLA
+async function obtenerServicios() {
+    try {
+      const response = await fetch("http://localhost:4000/api/obtenerServicios");
+      const servicios = await response.json();
+      renderServicios(servicios);
+    } catch (error) {
+      console.error("Error al obtener servicios:", error);
+    }
+  }
 
+  function renderServicios(servicios) {
+    const tableBody = document.querySelector("table tbody");
+    tableBody.innerHTML = "";
+
+    usuarios.forEach((servicios) => {
+        const formattedFechaNaci = formatDate(usuario.fechaNaci);
+      const row = `
+        <tr data-rut="${servicios.rut}">
+          <td>${servicios.nombre}</td>
+          <td>${servicios.apellido}</td>
+          <td>${servicios.fecha}</td>
+          <td>${servicios.comanda}</td>
+          <td>${servicios.Servicio}</td>
+          <td>${servicios.comision}</td>
+          <td>
+          <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-rut="${usuario.rut}"
+              onclick="editarUsuario(this.getAttribute('data-rut'))"
+              data-bs-target="#editarUsuarioModal"
+            >
+              Editar
+            </button>
+            <button type="button" class="btn btn-danger" onclick="borrarUsuario('${usuario.rut}')">Borrar</button>
+          </td>
+        </tr>`;
+      tableBody.insertAdjacentHTML("beforeend", row);
+    });
+  }
 //EDITAR LOS SERVICIOS A TRAVES DE MODAL
