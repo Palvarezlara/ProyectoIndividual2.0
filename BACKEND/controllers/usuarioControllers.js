@@ -21,11 +21,16 @@ export const comprobarUsuario = async (req, res) => {
 
 //para obtener todos los usuarios de la tabla
 export const obtenerUsuarios = async (req, res) => {
+  let objeto = {rol:[],
+                usuarios:[]}
   try {
-    const [usuarios] = await pool.query(
-      `SELECT * FROM funcionarias WHERE activo = true`
+    [objeto.usuarios] = await pool.query(
+      `SELECT rut, nombre, apellido, rol, fechaIngreso, fechaNaci, especialidad, banco, ncuenta, email, activo FROM funcionarias WHERE activo = true order by apellido`
     );
-    res.send(usuarios);
+    [objeto.rol] = await pool.query(
+      `SELECT rol, COUNT(rol) as cantidad FROM funcionarias GROUP BY rol`
+    );
+    res.send(objeto);
   } catch (error) {
     console.log(error);
     return res.status(500).json({

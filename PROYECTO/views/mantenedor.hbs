@@ -46,6 +46,9 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearUsuarioModal">
       Crear usuario
     </button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#descargarReporteModal" onclick="exportarExcel()">
+            Descargar Reporte
+        </button>
     <table class="table table-bordered table-striped text-center mt-4">
       <thead>
         <tr class="bg-primary text-white">
@@ -83,6 +86,21 @@
           </td>
         </tr>
         {{!-- {{}} --}}
+      </tbody>
+    </table>
+  </div>
+  {{!-- Tabla para order y group by --}}
+  <div>
+    <table class="table table-bordered table-striped text-center mt-4" id="">
+      <thead>
+        <tr class="bg-primary text-white">
+          <th scope="col">Cargo</th>
+          <th scope="col">Cantidad</th>
+
+        </tr>
+      </thead>
+      <tbody id="tablaRol">
+
       </tbody>
     </table>
   </div>

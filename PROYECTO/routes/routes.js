@@ -109,7 +109,7 @@ router.get("/perfil", (req, res, next) => {
   if (req.isAuthenticated()) {
     let nombre = req.session.passport.user.name;
     let rut = req.session.passport.user.id
-    res.render("perfil", { nombre,rut});
+    res.render("perfil", { nombre, rut });
   } else {
     res.render("login");
   }
@@ -151,7 +151,15 @@ router.get("/manualterap", (req, res, next) => {
   }
 });
 
-router.get("/mantenedor", (req, res) => {
-  res.render("mantenedor");
+router.get("/mantenedor", (req, res, next) => {
+  if (req.isAuthenticated()) {
+    let rol = req.session.passport.user.rol;
+    if(rol == "Admin"){
+      res.render("mantenedor")
+    }else{
+      res.render("reportes");
+    }
+  }else{
+    res.render("login");}
 });
 export default router;

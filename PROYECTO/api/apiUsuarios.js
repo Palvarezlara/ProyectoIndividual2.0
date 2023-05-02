@@ -63,8 +63,10 @@ async function obtenerUsuarios() {
 function renderUsuarios(usuarios) {
   const tableBody = document.querySelector("table tbody");
   tableBody.innerHTML = "";
-
-  usuarios.forEach((usuario) => {
+  const tablaRol = document.getElementById("tablaRol")
+  tablaRol.innerHTML = ""
+  console.log(usuarios.rol);
+  usuarios.usuarios.forEach((usuario) => {
     const formattedFechaIngreso = formatDate(usuario.fechaIngreso);
     const formattedFechaNaci = formatDate(usuario.fechaNaci);
     const row = `
@@ -96,6 +98,15 @@ function renderUsuarios(usuarios) {
       </tr>`;
     tableBody.insertAdjacentHTML("beforeend", row);
   });
+
+  usuarios.rol.forEach((rol) =>{
+    let fila = ` <tr>
+                  <td>${rol.rol}</td>
+                  <td>${rol.cantidad}</td>
+                </tr>`
+    tablaRol.insertAdjacentHTML("beforeend", fila)
+  })
+
 }
 
 function formatDate(dateString) {
