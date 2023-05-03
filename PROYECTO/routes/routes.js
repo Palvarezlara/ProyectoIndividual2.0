@@ -7,6 +7,8 @@ import PassportLocal from "passport-local";
 import mysql from "mysql2";
 import session from "express-session";
 import cookieParser from "cookie-parser";
+import swal from "sweetalert2";
+
 const router = Router();
 const PassPortLocal = PassportLocal.Strategy; // para crear la estrategia de auntenticacion
 
@@ -74,9 +76,6 @@ router.get("/", (req, res) => {
   res.render("login");
 });
 
-router.get("/reporteTerap", (req, res) => {
-  res.render("reporteTerap");
-});
 router.post(
   "/login1",
   passport.authenticate("local", { failureRedirect: "/" }),
@@ -114,24 +113,58 @@ router.get("/perfil", (req, res, next) => {
     res.render("login");
   }
 });
+// -----------------------Este lo hice yo---------------------------------
+// router.get("/reportes", (req, res, next) => {
+//   if (req.isAuthenticated()) {
+//     let rol = req.session.passport.user.rol;
+//     if(rol === "Admin"){
+//     res.render("reportes")
+//     } else {
+//     res.render("home", "Permisos insu");
+//   }}
+// });
+
+// ----------------------Este ChatGpt---------------------
+// router.get("/reportes", (req, res, next) => {
+//   if (req.isAuthenticated()) {
+//     let rol = req.session.passport.user.rol;
+//     if (rol === "Admin") {
+//       res.render("reportes");
+//     } else {
+//       res.render("home", { error: "No tienes permisos suficientes para acceder a esta página." });
+//     }
+//   } else {
+//     res.redirect("/login");
+//   }
+// });
+// -------------------------------------------
 
 router.get("/reportes", (req, res, next) => {
   if (req.isAuthenticated()) {
+    let rol = req.session.passport.user.rol;
+    if(rol === "Admin"){
+      res.render("reportes", { rol });
+    } else {
+      swal.fire({
+        icon: 'error',
+        title: 'Error de permisos',
+        text: 'No tienes suficientes permisos para acceder a esta página',
+      });
+      res.render("home");
+    }
+  } else {
+    res.redirect("login");
+  }
+});
+
+router.get("/reporteTerap", (req, res, next) => {
+  if (req.isAuthenticated()) {
     let nombre = req.session.passport.user.name;
-    res.render("reportes", { nombre });
+    res.render("reporteTerap", { nombre });
   } else {
     res.render("login");
   }
 });
-
-// router.get("/reporteTerap", (req, res, next) => {
-//   if (req.isAuthenticated()) {
-//     let nombre = req.session.passport.user.name;
-//     res.render("reporteTerap", { nombre });
-//   } else {
-//     res.render("login");
-//   }
-// });
 
 router.get("/horario", (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -151,15 +184,9 @@ router.get("/manualterap", (req, res, next) => {
   }
 });
 
-router.get("/mantenedor", (req, res, next) => {
-  if (req.isAuthenticated()) {
-    let rol = req.session.passport.user.rol;
-    if(rol == "Admin"){
-      res.render("mantenedor")
-    }else{
-      res.render("reportes");
-    }
-  }else{
-    res.render("login");}
+router.get("/mantenedor", (req, res) => {
+  console.log(req.body);
+  res.render("mantenedor");
 });
+
 export default router;
