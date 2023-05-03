@@ -12,6 +12,9 @@
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <script src="/src/js/validador.js"></script>
   <script src="/api/apiUsuarios.js"></script>
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="/src/js/descargarArchivo.js"></script>
+  
 </head>
 
 <body>
@@ -46,7 +49,7 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearUsuarioModal">
       Crear usuario
     </button>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#descargarReporteModal" onclick="exportarExcel()">
+    <button type="button" class="btn btn-primary" onclick= "exportarExcel()">
             Descargar Reporte
         </button>
     <table class="table table-bordered table-striped text-center mt-4">

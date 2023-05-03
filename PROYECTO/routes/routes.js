@@ -75,6 +75,9 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.get("/", (req, res) => {
   res.render("login");
 });
+router.get("/login", (req,res)=>{
+  res.render("login");
+});
 
 router.post(
   "/login1",
@@ -113,31 +116,7 @@ router.get("/perfil", (req, res, next) => {
     res.render("login");
   }
 });
-// -----------------------Este lo hice yo---------------------------------
-// router.get("/reportes", (req, res, next) => {
-//   if (req.isAuthenticated()) {
-//     let rol = req.session.passport.user.rol;
-//     if(rol === "Admin"){
-//     res.render("reportes")
-//     } else {
-//     res.render("home", "Permisos insu");
-//   }}
-// });
 
-// ----------------------Este ChatGpt---------------------
-// router.get("/reportes", (req, res, next) => {
-//   if (req.isAuthenticated()) {
-//     let rol = req.session.passport.user.rol;
-//     if (rol === "Admin") {
-//       res.render("reportes");
-//     } else {
-//       res.render("home", { error: "No tienes permisos suficientes para acceder a esta página." });
-//     }
-//   } else {
-//     res.redirect("/login");
-//   }
-// });
-// -------------------------------------------
 
 router.get("/reportes", (req, res, next) => {
   if (req.isAuthenticated()) {
