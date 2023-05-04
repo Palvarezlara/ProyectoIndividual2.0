@@ -5,31 +5,50 @@ import pool from "../db/conexion.js";
 export const crearComision = async (req, res) => {
     console.log("Solicitud recibida:", req.body);
     try {
-      // Obtener los datos del cuerpo de la solicitud
-      const {
+        // Obtener los datos del cuerpo de la solicitud
+        const {
             fecha,
             comanda,
             rut,
             idservicios
-       }=req.body;
+        } = req.body;
 
-      // Crear una consulta SQL utilizando placeholders para evitar SQL injection
-      const sql =
-        "INSERT INTO bd_comisiones (fecha, comanda, rut, idservicios ) VALUES (?, ?, ?, ?)";
+        // Crear una consulta SQL utilizando placeholders para evitar SQL injection
+        const sql =
+            "INSERT INTO bd_comisiones (fecha, comanda, rut, idservicios ) VALUES (?, ?, ?, ?)";
 
-      // Ejecutar la consulta utilizando el pool de pooles
-      await pool.query(sql, [
-        fecha,
-        comanda,
-        rut,
-        idservicios
-      ]);
-      res.status(200).json("comanda ingresada con éxito");
+        // Ejecutar la consulta utilizando el pool de pooles
+        await pool.query(sql, [
+            fecha,
+            comanda,
+            rut,
+            idservicios
+        ]);
+        res.status(200).json("comanda ingresada con éxito");
     } catch (error) {
-      // Devolver una respuesta con el error
-      res.status(500).json({ error: error.message });
+        // Devolver una respuesta con el error
+        res.status(500).json({ error: error.message });
     }
-  };
+};
+//PARA OBTENER TODOS LOS SERVICIOS DE LA TABLA
+export const obtenerComanda = async (req, res) => {
+    let objeto = { comanda: [] }
+    try {
+        [objeto.comanda] = await pool.query(
+            `SELECT f.rut, f.nombre, f.apellido, bd.fecha, bd.comanda, t.nombre, t.comision
+        FROM funcionarias as f
+        INNER JOIN bd_comisiones as bd ON (funcionarias.rut = bd_comisiones.rut)
+        INNER JOIN terapias as t ON (bd_comisiones.idservicios = terapias.idservicios)
+        WHERE funcionarias.rut like ?`, ["16233794-7"]
+        );
+        res.send(objeto);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            mensaje: "Algo salio muy mal",
+        });
+    }
+};
 
 //CREAR HORARIO DE TURNO DESDE HORARIOS
 

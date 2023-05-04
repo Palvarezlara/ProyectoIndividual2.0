@@ -1,5 +1,6 @@
 
 //DESCARGAR EXCEL DE LA TABLA DE USUARIOS
+
 function obtenerData() {
     // Obtener los datos de la tabla HTML
     const tabla = document.querySelector('table');
@@ -31,18 +32,17 @@ function obtenerData() {
 function exportarExcel() {
     // Obtener los datos a exportar
     const usuarios = obtenerData();
-  
+
     // Crear un objeto Workbook de SheetJS
     const workbook = XLSX.utils.book_new();
-  
+
     // Crear una hoja con los datos
     const worksheet = XLSX.utils.json_to_sheet(usuarios);
-  
+
     // Agregar la hoja al Workbook
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Usuarios');
-  
+
     // Generar un archivo Excel y descargarlo
     XLSX.writeFile(workbook, 'usuarios.xlsx');
   }
-  
-console.log("Hola mundo")
+

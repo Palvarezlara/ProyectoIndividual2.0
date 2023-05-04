@@ -117,7 +117,6 @@ router.get("/perfil", (req, res, next) => {
   }
 });
 
-
 router.get("/reportes", (req, res, next) => {
   if (req.isAuthenticated()) {
     let rol = req.session.passport.user.rol;

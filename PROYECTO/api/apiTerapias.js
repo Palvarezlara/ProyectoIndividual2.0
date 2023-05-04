@@ -54,7 +54,7 @@ async function enviarDatosFormulario(formData) {
 
 //CREAR SERVICIO NUEVO DESDE EL REPORTE MODAL
 
-//OBTENER LOS SERVICIOS PARA MOSTRAR EN LA TABLA
+//OBTENER LOS SERVICIOS PARA MOSTRAR EN LA TABLA NO TERMINADO
 async function obtenerServicios() {
     try {
       const response = await fetch("http://localhost:4000/api/obtenerServicios");
