@@ -5,5 +5,5 @@ import {
 
   const router = Router();
   router.post("/api/crearComision", crearComision);
-  router.post("/api/obtenerComanda", obtenerComanda);
+  router.get("/api/obtenerComanda/:rut", obtenerComanda);
   export default router;

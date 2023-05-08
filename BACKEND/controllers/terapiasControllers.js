@@ -32,14 +32,15 @@ export const crearComision = async (req, res) => {
 };
 //PARA OBTENER TODOS LOS SERVICIOS DE LA TABLA
 export const obtenerComanda = async (req, res) => {
-    let objeto = { comanda: [] }
+    let objeto
+    let {rut }= req.params;
     try {
-        [objeto.comanda] = await pool.query(
-            `SELECT f.rut, f.nombre, f.apellido, bd.fecha, bd.comanda, t.nombre, t.comision
+        [objeto] = await pool.query(
+            `SELECT f.rut, f.nombre, f.apellido, bd.fecha, bd.comanda, te.nombreTerapia, te.comision
         FROM funcionarias as f
-        INNER JOIN bd_comisiones as bd ON (funcionarias.rut = bd_comisiones.rut)
-        INNER JOIN terapias as t ON (bd_comisiones.idservicios = terapias.idservicios)
-        WHERE funcionarias.rut like ?`, ["16233794-7"]
+        INNER JOIN bd_comisiones as bd ON (f.rut = bd.rut)
+        INNER JOIN terapias as te ON (bd.idservicios = te.idservicios)
+        WHERE f.rut = ?`, [rut]
         );
         res.send(objeto);
     } catch (error) {
@@ -49,6 +50,7 @@ export const obtenerComanda = async (req, res) => {
         });
     }
 };
+
 
 //CREAR HORARIO DE TURNO DESDE HORARIOS
 
