@@ -60,14 +60,7 @@ passport.use(
     }
   })
 );
-//Función para la ruta del admin
-function isAdmin(req, res, next) {
-  if (req.isAuthenticated() && req.session.passport.user.rol === "Admin") {
-    return next();
-  } else {
-    res.render("reportes")
-  }
-}
+
 //guardar los datos de usuario
 passport.serializeUser(function (user, done) {
   done(null, user);
@@ -80,9 +73,12 @@ passport.deserializeUser(function (user, done) {
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
+
+// --------------------------Ruta de inicio al login---------------------------------
 router.get("/", (req, res) => {
   res.render("login");
 });
+
 router.get("/login", (req,res)=>{
   res.render("login");
 });
@@ -96,6 +92,7 @@ router.post(
   }
 );
 
+// ------------------------Con cliente identificado pasa a Home--------------------
 router.get("/home", (req, res, next) => {
   if (req.isAuthenticated()) {
     let nombre = req.session.passport.user.name;
@@ -105,6 +102,7 @@ router.get("/home", (req, res, next) => {
   }
 });
 
+// -------------------------Aciones para enviar formularios-----------------
 router.post("/terapias", (req, res) => {
   console.log(req.body);
   res.render("perfil");
@@ -114,6 +112,7 @@ router.post("/save", (req, res) => {
   console.log(req.body);
   res.render("mantenedor");
 });
+
 
 router.get("/perfil", (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -162,9 +161,24 @@ router.get("/manualterap", (req, res, next) => {
   }
 });
 
+//Función para la ruta del admin
+function isAdmin(req, res, next) {
+  if (req.isAuthenticated() && req.session.passport.user.rol === "Admin") {
+    return next();
+  } else {
+    res.render("reportes")
+  }
+}
 router.get("/mantenedor", isAdmin, (req, res) => {
   console.log(req.body);
   res.render("mantenedor");
 });
 
+router.get('/logout', (req, res, next) => {
+  req.logout(function (err) {
+      if (err) { return next(err); }
+      res.render('login');
+  });
+
+});
 export default router;
