@@ -12,6 +12,7 @@
   <script src="/api/apiUsuarios.js"></script>
   <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
   <script src="/src/js/descargarArchivo.js"></script>
+  <link rel="stylesheet" href=".\src\css\enlace.css">
 
 </head>
 
@@ -35,8 +36,8 @@
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
+          {{!-- <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"> --}}
+          <button class="btn btn-outline-primary" type="submit"><a href="/logout">SALIR</a></button>
         </form>
       </div>
     </div>

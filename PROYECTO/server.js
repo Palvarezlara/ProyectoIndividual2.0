@@ -5,6 +5,7 @@ import indexRoutes from "./routes/routes.js";
 import * as helpers from "./utils/helpers/hbs.js";
 import hbs from "hbs";
 import cors from "cors";
+
 const app = express();
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
