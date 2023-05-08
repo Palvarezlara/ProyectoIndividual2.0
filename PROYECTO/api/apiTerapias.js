@@ -1,5 +1,5 @@
 //ENVIAR SERVICIO NUEVO DESDE EL PERFIL TERAPEUTA
-async function enviarDatosFormulario(formData) {
+async function enviarComandaFormulario(formData) {
     const json = formDataToJson(formData);
     console.log(json);
     try {
