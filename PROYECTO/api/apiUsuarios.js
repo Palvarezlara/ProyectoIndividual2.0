@@ -67,7 +67,6 @@ function renderUsuarios(usuarios) {
   tableBody.innerHTML = "";
   const tablaRol = document.getElementById("tablaRol")
   tablaRol.innerHTML = ""
-  console.log(usuarios.rol);
   usuarios.usuarios.forEach((usuario) => {
     const formattedFechaIngreso = formatDate(usuario.fechaIngreso);
     const formattedFechaNaci = formatDate(usuario.fechaNaci);

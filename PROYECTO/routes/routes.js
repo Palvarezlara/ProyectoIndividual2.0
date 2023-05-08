@@ -60,6 +60,14 @@ passport.use(
     }
   })
 );
+//Función para la ruta del admin
+function isAdmin(req, res, next) {
+  if (req.isAuthenticated() && req.session.passport.user.rol === "Admin") {
+    return next();
+  } else {
+    res.render("reportes")
+  }
+}
 //guardar los datos de usuario
 passport.serializeUser(function (user, done) {
   done(null, user);
@@ -119,26 +127,18 @@ router.get("/perfil", (req, res, next) => {
 
 router.get("/reportes", (req, res, next) => {
   if (req.isAuthenticated()) {
-    let rol = req.session.passport.user.rol;
-    if(rol === "Admin"){
-      res.render("reportes", { rol });
-    } else {
-      swal.fire({
-        icon: 'error',
-        title: 'Error de permisos',
-        text: 'No tienes suficientes permisos para acceder a esta página',
-      });
-      res.render("home");
-    }
+    let nombre = req.session.passport.user.name;
+    res.render("reportes", { nombre });
   } else {
-    res.redirect("login");
+    res.render("login");
   }
 });
 
 router.get("/reporteTerap", (req, res, next) => {
   if (req.isAuthenticated()) {
     let nombre = req.session.passport.user.name;
-    res.render("reporteTerap", { nombre });
+    let rut = req.session.passport.user.id
+    res.render("reporteTerap", { nombre, rut });
   } else {
     res.render("login");
   }
@@ -162,7 +162,7 @@ router.get("/manualterap", (req, res, next) => {
   }
 });
 
-router.get("/mantenedor", (req, res) => {
+router.get("/mantenedor", isAdmin, (req, res) => {
   console.log(req.body);
   res.render("mantenedor");
 });
