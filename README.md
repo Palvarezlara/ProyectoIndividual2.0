@@ -1,4 +1,4 @@
-# ProyectoIndividual2.0
+# ProyectoIndividual
 Proyecto Personal Bootcamp
 
 Este proyecto consiste en una aplicación web enfocada en un centro de masajes, en el cual existe un usuario terapeuta que requiere ingresar las terapias que realiza en su turno, además de su horario de entrada y salida, este podrá visualizar una tabla con todas sus comandas.
@@ -40,13 +40,13 @@ Algorítmo de cálculo y manipulación de archivos de texto
 	
 Uso 	general del lenguaje, sintáxis, selección de tipos de dato, sentencias lógicas, expresiones, operaciones y comparaciones: 	Ejemplos: 1 , 2
  	
-Uso 	de sentencias repetitivas: PROYECTO/api/apiTerapias.js, PROYECTO/api/apiUsuarios.js
+Uso 	de sentencias repetitivas: PROYECTO/api/apiTerapias.js:78, PROYECTO/api/apiUsuarios.js:68,  PROYECTO/api/apiUsuarios.js:101, PROYECTO/public/src/js/descarArchivos.js:11, 
  	
 Convenciones 	y estilos de programación: PROYECTO/routes/routes.js
  	
 Utilización 	correcta de estructuras de datos: PROYECTO/routes/routes.js
  	
-Manipulación 	de archivos: 	Frontend: http://localhost:3000/mantenedor: PROYECTO: 	public/src/js/descargarArchivos.js Descarga un archivo excel con la tabla de usuarios.
+Manipulación 	de archivos: 	Frontend: http://localhost:3000/mantenedor: PROYECTO: 	public/src/js/descargarArchivos.js Descarga un archivo excel con la tabla de usuarios. PROYECTO/views/mantenedor.hbs:51
 
 
 Página Web y HTML
