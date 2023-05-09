@@ -22,8 +22,11 @@ contraseña: 12345
 
 Para fines prácticos de demostración se agregaron los archivos .env de los respectivos proyectos
 
+
 Rúbrica:
+
 Links donde encontrar ejemplos de los aspectos a evaluar:
+
 Consulta a la base de datos
 	
 Selección 	de columnas requeridas para presentar la información 	solicitada: BACKEND: 	controllers/usuarioControllers.js
@@ -56,13 +59,13 @@ Uso 	de tags html, estilos y responsividad - Uso de 	Bootstrap: PROYECTO/views/m
 
 Lenguaje Node
 	
-Inclusión 	de paquetes y librerías de 	usuario: PROYECTO 	package.json , BACKEND 	package.json, Ejemplo 	en código
+Inclusión de paquetes y librerías de 	usuario: PROYECTO 	package.json , BACKEND 	package.json, Ejemplo 	en código
  	
-Agrupación 	del código y separación por funcionalidad: En la siguiente carpeta 	se encuentran distintas funcionalidades separadas en archivos y funciones public/src/js
+Agrupación del código y separación por funcionalidad: En la siguiente carpeta 	se encuentran distintas funcionalidades separadas en archivos y funciones public/src/js
  	
-Utilización 	de funciones asíncronas: PROYECTO/routes/routes.js, PROYECTO/api/apiUsuarios.js,  BACKEND/controllers/usuarioControllers.js
+Utilización de funciones asíncronas: PROYECTO/routes/routes.js, PROYECTO/api/apiUsuarios.js,  BACKEND/controllers/usuarioControllers.js
  	
-Lectura 	de parámetros de entrada: Proyecto/apiUsuarios.js Frontend: http://localhost:3000/mantenedor crear usuario nuevo y editar	
+Lectura de parámetros de entrada: Proyecto/apiUsuarios.js Frontend: http://localhost:3000/mantenedor crear usuario nuevo y editar	
 
 
 Conexión a Base de Datos
@@ -73,7 +76,7 @@ Manejo 	y ejecución de consultas desde Node: BACKEND/controllers/usuarioControl
 
 Uso de Express
 	
-Creación 	servicio Rest con Express: BACKEND
+Creación servicio Rest con Express: BACKEND
 
 
 
