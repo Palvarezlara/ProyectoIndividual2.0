@@ -79,7 +79,7 @@ router.get("/", (req, res) => {
   res.render("login");
 });
 
-router.get("/login", (req,res)=>{
+router.get("/login", (req, res) => {
   res.render("login");
 });
 
@@ -113,7 +113,7 @@ router.post("/save", (req, res) => {
   res.render("mantenedor");
 });
 
-
+//-------------Ingreso a página donde ingresa las comandas--------------------
 router.get("/perfil", (req, res, next) => {
   if (req.isAuthenticated()) {
     let nombre = req.session.passport.user.name;
@@ -123,7 +123,7 @@ router.get("/perfil", (req, res, next) => {
     res.render("login");
   }
 });
-
+//--------------Segundo menú-------------------------
 router.get("/reportes", (req, res, next) => {
   if (req.isAuthenticated()) {
     let nombre = req.session.passport.user.name;
@@ -132,7 +132,7 @@ router.get("/reportes", (req, res, next) => {
     res.render("login");
   }
 });
-
+// -------------Tabla con el reporte de todas las comandas---------------------
 router.get("/reporteTerap", (req, res, next) => {
   if (req.isAuthenticated()) {
     let nombre = req.session.passport.user.name;
@@ -142,7 +142,7 @@ router.get("/reporteTerap", (req, res, next) => {
     res.render("login");
   }
 });
-
+//-------------Página donde ingresan horario de entrada no terminado-------
 router.get("/horario", (req, res, next) => {
   if (req.isAuthenticated()) {
     let nombre = req.session.passport.user.name;
@@ -161,12 +161,12 @@ router.get("/manualterap", (req, res, next) => {
   }
 });
 
-//Función para la ruta del admin
+//Función para filtrar los usuarios del Admin
 function isAdmin(req, res, next) {
   if (req.isAuthenticated() && req.session.passport.user.rol === "Admin") {
     return next();
   } else {
-    res.render("reportes")
+    res.render("login")
   }
 }
 router.get("/mantenedor", isAdmin, (req, res) => {
@@ -174,10 +174,11 @@ router.get("/mantenedor", isAdmin, (req, res) => {
   res.render("mantenedor");
 });
 
+//---------------Para volver al login desde la página---------------------
 router.get('/logout', (req, res, next) => {
   req.logout(function (err) {
-      if (err) { return next(err); }
-      res.render('login');
+    if (err) { return next(err); }
+    res.render('login');
   });
 
 });

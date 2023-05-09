@@ -37,6 +37,7 @@ body {
 #seleccion {
     color: #fff !important;
 }
+
 .login-box .user-box input {
     width: 100%;
     padding: 10px 0;
@@ -52,20 +53,25 @@ body {
 input[type=date]:required:invalid::-webkit-datetime-edit {
     color: transparent;
 }
+
 input[type=time]:required:invalid::-webkit-datetime-edit {
     color: transparent;
 }
+
 input[type=text]:required:invalid::-webkit-datetime-edit {
     color: transparent;
 }
+
 .disabled {
     opacity: 0.5;
     pointer-events: none;
 }
+
 a {
-    color: #fff!important;
+    color: #fff !important;
 }
-select{
+
+select {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -80,7 +86,7 @@ select{
 }
 
 
-option{
+option {
     background: rgba(0, 0, 0, .6);
 }
 
@@ -126,9 +132,11 @@ option{
     background-color: transparent;
     border: none;
 }
-#volver{
+
+#volver {
     margin-left: 30px;
 }
+
 #input {
     width: 100%;
     padding: 16px 20px;

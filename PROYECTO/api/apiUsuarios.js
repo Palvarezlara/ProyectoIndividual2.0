@@ -1,5 +1,3 @@
-
-
 // CREAR USUARIO
 async function enviarDatosFormulario(formData) {
   const json = formDataToJson(formData);
@@ -100,7 +98,7 @@ function renderUsuarios(usuarios) {
     tableBody.insertAdjacentHTML("beforeend", row);
   });
 
-  usuarios.rol.forEach((rol) =>{
+  usuarios.rol.forEach((rol) => {
     let fila = ` <tr>
                   <td>${rol.rol}</td>
                   <td>${rol.cantidad}</td>

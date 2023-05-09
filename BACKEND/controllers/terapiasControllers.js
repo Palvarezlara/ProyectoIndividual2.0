@@ -33,7 +33,7 @@ export const crearComision = async (req, res) => {
 //PARA OBTENER TODOS LOS SERVICIOS DE LA TABLA
 export const obtenerComanda = async (req, res) => {
     let objeto
-    let {rut }= req.params;
+    let { rut } = req.params;
     try {
         [objeto] = await pool.query(
             `SELECT f.rut, f.nombre, f.apellido, bd.fecha, bd.comanda, te.nombreTerapia, te.comision
